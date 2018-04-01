@@ -2,26 +2,20 @@ package at.refugeescode.Hospital_Admission.model;
 
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
-
-
+@Component
 public class Patient {
 
     private int patientNumber;
     private String name;
-    private List<String> symptoms = new ArrayList <>();
-    private String illness;
+    private String symptoms;
 
     public Patient() {
     }
 
-
-    public Patient(int patientNumber, String name, List <String> symptoms, String illness) {
-        this.patientNumber = patientNumber;
+    public Patient(int patientNumber, String name, String symptoms) {
+        patientNumber = 0;
         this.name = name;
         this.symptoms = symptoms;
-        this.illness = illness;
     }
 
     public int getPatientNumber() {
@@ -32,13 +26,8 @@ public class Patient {
         return name;
     }
 
-
-    public List <String> getSymptoms() {
+    public String getSymptoms() {
         return symptoms;
-    }
-
-    public String getIllness() {
-        return illness;
     }
 
     public void setPatientNumber(int patientNumber) {
@@ -49,12 +38,8 @@ public class Patient {
         this.name = name;
     }
 
-    public void setSymptoms(List <String> symptoms) {
+    public void setSymptoms(String symptoms) {
         this.symptoms = symptoms;
-    }
-
-    public void setIllness(String illness) {
-        this.illness = illness;
     }
 
     @Override
@@ -63,7 +48,7 @@ public class Patient {
                 "patientNumber=" + patientNumber +
                 ", name='" + name + '\'' +
                 ", symptoms=" + symptoms +
-                ", illness='" + illness + '\'' +
+                 '\'' +
                 '}';
     }
 }

@@ -1,25 +1,31 @@
 package at.refugeescode.Accountancy.persistence.model;
 
-import org.springframework.data.annotation.Id;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import javax.persistence.Id;
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
+import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
+
+//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+//@JsonAutoDetect(fieldVisibility = ANY)
 @Entity
 public class Patient {
 
     @Id
     @GeneratedValue
+    @JsonIgnore
     private Long id;
 
     private int patientNumber;
 
     private String name;
 
-    private List<String> symptoms = new ArrayList<>();
+    private String symptoms;
 
     private String illness;
 
@@ -52,11 +58,11 @@ public class Patient {
         this.name = name;
     }
 
-    public List <String> getSymptoms() {
+    public String getSymptoms() {
         return symptoms;
     }
 
-    public void setSymptoms(List <String> symptoms) {
+    public void setSymptoms(String symptoms) {
         this.symptoms = symptoms;
     }
 

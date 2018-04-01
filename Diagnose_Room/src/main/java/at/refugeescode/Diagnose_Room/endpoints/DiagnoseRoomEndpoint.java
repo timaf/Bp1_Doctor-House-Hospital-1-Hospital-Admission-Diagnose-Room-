@@ -2,6 +2,7 @@ package at.refugeescode.Diagnose_Room.endpoints;
 
 import at.refugeescode.Diagnose_Room.logic.DrHouseDiagnose;
 import at.refugeescode.Diagnose_Room.model.Patient;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -14,8 +15,9 @@ public class DiagnoseRoomEndpoint {
 
     private RestTemplate restTemplate;
     private DrHouseDiagnose drHouseDiagnose;
-    private List <Patient> patients = new ArrayList <>();
 
+    @Value("${nursery.url}")
+    private String nurseryUrl;
 
     public DiagnoseRoomEndpoint(RestTemplate restTemplate, DrHouseDiagnose drHouseDiagnose) {
         this.restTemplate = restTemplate;
@@ -23,16 +25,14 @@ public class DiagnoseRoomEndpoint {
     }
 
     @GetMapping
-    List <Patient> receivePatient() {
-        return patients;
+    String bringAll(){
+        return "first";
     }
 
     @PostMapping
     Patient addPatient(@RequestBody Patient patient) {
         Patient diagnoseRoomPatient = drHouseDiagnose.diagnosePatient(patient);
-        patients.add(diagnoseRoomPatient);
-        String nurseryUrl = "http://localhost:9003/patients";
-        patient = restTemplate.postForObject(nurseryUrl, diagnoseRoomPatient, Patient.class);
+        restTemplate.postForObject(nurseryUrl, diagnoseRoomPatient, Patient.class);
         return  diagnoseRoomPatient;
 
     }

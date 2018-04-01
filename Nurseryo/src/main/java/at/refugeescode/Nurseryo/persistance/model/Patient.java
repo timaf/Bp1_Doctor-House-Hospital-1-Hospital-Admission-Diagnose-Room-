@@ -1,10 +1,7 @@
-package at.refugeescode.Nurseryo.persistence.model;
+package at.refugeescode.Nurseryo.persistance.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Document
 public class Patient {
@@ -16,7 +13,7 @@ public class Patient {
 
     private String name;
 
-    private List <String> symptoms = new ArrayList <>();
+    private String symptoms;
 
     private String illness;
 
@@ -25,7 +22,7 @@ public class Patient {
     public Patient() {
     }
 
-    public Patient(int patientNumber, String name, List <String> symptoms, String illness, String treatment) {
+    public Patient(int patientNumber, String name, String symptoms, String illness, String treatment) {
         this.patientNumber = patientNumber;
         this.name = name;
         this.symptoms = symptoms;
@@ -57,11 +54,11 @@ public class Patient {
         this.name = name;
     }
 
-    public List <String> getSymptoms() {
+    public String getSymptoms() {
         return symptoms;
     }
 
-    public void setSymptoms(List <String> symptoms) {
+    public void setSymptoms(String symptoms) {
         this.symptoms = symptoms;
     }
 

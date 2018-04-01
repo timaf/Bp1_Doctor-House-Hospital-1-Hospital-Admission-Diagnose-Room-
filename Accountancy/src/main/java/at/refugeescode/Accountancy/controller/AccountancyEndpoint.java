@@ -10,35 +10,29 @@ import java.util.List;
 import java.util.Set;
 
 @RestController
-@RequestMapping
+@RequestMapping("/patients")
 public class AccountancyEndpoint {
 
-    private List<Patient> patients;
-
-    private Patient accountancyPatient;
+    private AccountancyRepository accountancyRepository;
 
     private TreatmentCost treatmentCost;
 
-    private AccountancyRepository accountancyRepo;
-
-    @GetMapping("/patients")
-
-    String welcomeAccountancy(){
-        return " welcome accountancy";
+    public AccountancyEndpoint(AccountancyRepository accountancyRepository, TreatmentCost treatmentCost) {
+        this.accountancyRepository = accountancyRepository;
+        this.treatmentCost = treatmentCost;
     }
 
-    @PostMapping("/patients")
+    @GetMapping
+    List<Patient> bringAll(){
+        return accountancyRepository.findAll();
+    }
+
+
+    @PostMapping
     Patient calculateCost(@RequestBody Patient patient){
-        accountancyPatient.setPatientNumber(patient.getPatientNumber());
-        accountancyPatient.setName(patient.getName());
-        accountancyPatient.setSymptoms(patient.getSymptoms());
-        accountancyPatient.setIllness(patient.getIllness());
-        accountancyPatient.setTreatment(patient.getTreatment());
-        Invoice invoice = treatmentCost.calculateCost(accountancyPatient);
-        Set <Invoice> invoices = accountancyPatient.getInvoices();
-        invoices.add(invoice);
-        accountancyPatient.setInvoices(invoices);
-        accountancyRepo.save(accountancyPatient);
+        Patient accountancyPatient = treatmentCost.calculateCost(patient);
+        accountancyRepository.save(accountancyPatient);
+        System.out.println(accountancyPatient);
         return accountancyPatient;
     }
 

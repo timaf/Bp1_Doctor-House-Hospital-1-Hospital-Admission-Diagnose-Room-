@@ -9,12 +9,17 @@ import java.util.List;
 @Service
 public class DrHouseDiagnose {
 
-    private Patient patient;
-
+// symptoms mostly are : fever,pain,headache,vomit,dizziness,cold
     @Value("#{'${illnesses}'.split(',')}")
     private List<String> illnesses ;
 
   public Patient  diagnosePatient(Patient patient){
+
+
+
+      patient.setPatientNumber(patient.getPatientNumber());
+      patient.setName(patient.getName());
+      patient.setSymptoms(patient.getSymptoms());
       if(patient.getSymptoms().contains("fever"))
           patient.setIllness(illnesses.get(0));
       else if (patient.getSymptoms().contains("dizziness"))

@@ -10,17 +10,10 @@ import java.util.UUID;
 public class Patient {
     private int patientNumber;
     private String name;
-    private List<String> symptoms = new ArrayList <>();
+    private String symptoms;
     private String illness;
 
     public Patient() {
-    }
-
-    public Patient(int patientNumber, String name, List <String> symptoms, String illness) {
-        this.patientNumber = patientNumber;
-        this.name = name;
-        this.symptoms = symptoms;
-        this.illness = illness;
     }
 
     public int getPatientNumber() {
@@ -31,7 +24,7 @@ public class Patient {
         return name;
     }
 
-    public List <String> getSymptoms() {
+    public String getSymptoms() {
         return symptoms;
     }
 
@@ -47,7 +40,7 @@ public class Patient {
         this.name = name;
     }
 
-    public void setSymptoms(List <String> symptoms) {
+    public void setSymptoms(String symptoms) {
         this.symptoms = symptoms;
     }
 

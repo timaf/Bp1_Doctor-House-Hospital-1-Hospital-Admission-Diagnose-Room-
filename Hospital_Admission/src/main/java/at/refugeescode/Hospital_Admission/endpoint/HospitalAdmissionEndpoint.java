@@ -1,11 +1,11 @@
 package at.refugeescode.Hospital_Admission.endpoint;
 
-import at.refugeescode.Hospital_Admission.logic.PatientsGenerator;
 import at.refugeescode.Hospital_Admission.model.Patient;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -14,24 +14,26 @@ import java.util.Random;
 public class HospitalAdmissionEndpoint {
 
     private RestTemplate restTemplate;
-    private PatientsGenerator patientsGenerator ;
+    private List <Patient> patients = new ArrayList<>();
 
-    public HospitalAdmissionEndpoint(RestTemplate restTemplate, PatientsGenerator patientsGenerator) {
+    @Value("${diagnose.url}")
+    private String diagnoseUrl;
+
+    public HospitalAdmissionEndpoint(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
-        this.patientsGenerator = patientsGenerator;
     }
 
     @GetMapping
-    Patient sendPatient() {
-        List <Patient> patients = patientsGenerator.bringPatients();
-        System.out.println("The patients are here .");
-        String diagnoseUrl = "http://localhost:9002/patients";
+    List<Patient> welcome(){
+        return patients;
+    }
+
+    @PostMapping
+    Patient startPatient(@RequestBody Patient patient) {
         int patientNumber = new Random().nextInt(100);
-        Collections.shuffle(patients);
-        Patient patient = patients.get(0);
         patient.setPatientNumber(patientNumber);
-        Patient patient1 = restTemplate.postForObject(diagnoseUrl, patient, Patient.class);
-        System.out.println(patient1.toString());
-        return patient1;
+        patients.add(patient);
+        restTemplate.postForObject(diagnoseUrl, patient, Patient.class);
+        return patient;
     }
 }
