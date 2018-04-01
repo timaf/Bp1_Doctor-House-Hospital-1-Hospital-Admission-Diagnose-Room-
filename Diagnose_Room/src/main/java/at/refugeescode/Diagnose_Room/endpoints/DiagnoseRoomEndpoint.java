@@ -24,11 +24,6 @@ public class DiagnoseRoomEndpoint {
         this.drHouseDiagnose = drHouseDiagnose;
     }
 
-    @GetMapping
-    String bringAll(){
-        return "first";
-    }
-
     @PostMapping
     Patient addPatient(@RequestBody Patient patient) {
         Patient diagnoseRoomPatient = drHouseDiagnose.diagnosePatient(patient);

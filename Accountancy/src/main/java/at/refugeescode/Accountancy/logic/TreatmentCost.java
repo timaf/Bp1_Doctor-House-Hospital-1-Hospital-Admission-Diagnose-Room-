@@ -33,13 +33,9 @@ public class TreatmentCost {
         double cost = Double.parseDouble(accountMap.get(patient.getTreatment()));
 
         invoice = new Invoice(patient.getName(), LocalDateTime.now(),cost);
-        System.out.println(patient.toString());
-
         Set <Invoice> invoices = patient.getInvoices();
         invoices.add(invoice);
         patient.setInvoices(invoices);
-
-        System.out.println(patient.toString());
         return patient;
     }
 }

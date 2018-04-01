@@ -32,9 +32,6 @@ public class PatientTreatment {
                 .collect(toMap(illnesses::get, treatments::get));
 
         patient.setTreatment(treatmentMap.get(patient.getIllness()));
-
-        System.out.println(patient.toString());
-
         patientRepository.save(patient);
         return patient;
     }

@@ -22,17 +22,11 @@ public class AccountancyEndpoint {
         this.treatmentCost = treatmentCost;
     }
 
-    @GetMapping
-    List<Patient> bringAll(){
-        return accountancyRepository.findAll();
-    }
-
 
     @PostMapping
     Patient calculateCost(@RequestBody Patient patient){
         Patient accountancyPatient = treatmentCost.calculateCost(patient);
         accountancyRepository.save(accountancyPatient);
-        System.out.println(accountancyPatient);
         return accountancyPatient;
     }
 

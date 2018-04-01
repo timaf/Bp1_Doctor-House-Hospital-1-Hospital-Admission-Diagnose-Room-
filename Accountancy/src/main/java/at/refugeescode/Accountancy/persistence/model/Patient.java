@@ -1,18 +1,12 @@
 package at.refugeescode.Accountancy.persistence.model;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.Id;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
-
-//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-//@JsonAutoDetect(fieldVisibility = ANY)
 @Entity
 public class Patient {
 

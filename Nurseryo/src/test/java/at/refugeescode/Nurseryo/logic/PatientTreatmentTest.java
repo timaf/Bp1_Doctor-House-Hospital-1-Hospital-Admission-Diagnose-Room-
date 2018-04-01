@@ -2,7 +2,6 @@ package at.refugeescode.Nurseryo.logic;
 
 import at.refugeescode.Nurseryo.persistance.model.Patient;
 import at.refugeescode.Nurseryo.persistance.repository.PatientRepository;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,10 +25,7 @@ class PatientTreatmentTest {
 
     @Test
     void treatPatient() {
-        Patient patient = new Patient();
-        patient.setName("Sarah");
-        patient.setIllness("HeartDisease");
-
+        Patient patient = new Patient(3,"Sarah","pain","HeartDisease");
         treatment.treatPatient(patient);
 
         Example <Patient> example = Example.of(patient);

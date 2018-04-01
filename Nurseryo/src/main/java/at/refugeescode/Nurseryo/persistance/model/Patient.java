@@ -22,12 +22,11 @@ public class Patient {
     public Patient() {
     }
 
-    public Patient(int patientNumber, String name, String symptoms, String illness, String treatment) {
+    public Patient(int patientNumber, String name, String symptoms, String illness) {
         this.patientNumber = patientNumber;
         this.name = name;
         this.symptoms = symptoms;
         this.illness = illness;
-        this.treatment = treatment;
     }
 
     public String getId() {
