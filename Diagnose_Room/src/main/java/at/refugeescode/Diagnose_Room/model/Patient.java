@@ -8,22 +8,22 @@ import java.util.UUID;
 
 @Component
 public class Patient {
-    private UUID id;
+    private int id;
     private String name;
     private List<String> symptoms = new ArrayList <>();
-    private String ilness;
+    private String illness;
 
     public Patient() {
     }
 
-    public Patient(UUID id, String name, List <String> symptoms, String ilness) {
+    public Patient(int id, String name, List <String> symptoms, String illness) {
         this.id = id;
         this.name = name;
         this.symptoms = symptoms;
-        this.ilness = ilness;
+        this.illness = illness;
     }
 
-    public UUID getId() {
+    public int getId() {
         return id;
     }
 
@@ -36,11 +36,11 @@ public class Patient {
         return symptoms;
     }
 
-    public String getIlness() {
-        return ilness;
+    public String getIllness() {
+        return illness;
     }
 
-    public void setId(UUID id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -52,7 +52,7 @@ public class Patient {
         this.symptoms = symptoms;
     }
 
-    public void setIlness(String ilness) {
-        this.ilness = ilness;
+    public void setIllness(String illness) {
+        this.illness = illness;
     }
 }
