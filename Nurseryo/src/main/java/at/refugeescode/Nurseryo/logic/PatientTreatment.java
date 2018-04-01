@@ -6,11 +6,18 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.IntStream;
+
+import static java.util.stream.Collectors.toMap;
 
 @Service
 public class PatientTreatment {
 
     private PatientRepository patientRepository;
+
+    @Value("#{'${illnesses}'.split(',')}")
+    private List<String> illnesses ;
 
     @Value("#{'${recommendedTreatment}'.split(',')}")
     private List<String> treatments;
@@ -20,20 +27,14 @@ public class PatientTreatment {
     }
 
     public Patient treatPatient(Patient patient) {
-//        patient.setPatientNumber(patient.getPatientNumber());
-//        patient.setName(patient.getName());
-//        patient.setSymptoms(patient.getSymptoms());
-//        patient.setIllness(patient.getIllness());
-        if (patient.getIllness().equalsIgnoreCase("HeartDisease"))
-            patient.setTreatment(treatments.get(0));
-        else if (patient.getIllness().equalsIgnoreCase("Flu"))
-            patient.setTreatment(treatments.get(1));
-        else if (patient.getIllness().equalsIgnoreCase("Diabetes"))
-            patient.setTreatment(treatments.get(2));
-        else if (patient.getIllness().equalsIgnoreCase("Allergies"))
-            patient.setTreatment(treatments.get(3));
-        else
-            patient.setTreatment(treatments.get(4));
+        Map<String, String> treatmentMap = IntStream.range(0, illnesses.size())
+                .boxed()
+                .collect(toMap(illnesses::get, treatments::get));
+
+        patient.setTreatment(treatmentMap.get(patient.getIllness()));
+
+        System.out.println(patient.toString());
+
         patientRepository.save(patient);
         return patient;
     }
