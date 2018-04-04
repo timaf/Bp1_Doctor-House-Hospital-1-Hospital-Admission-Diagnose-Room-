@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 @Service
@@ -28,6 +29,7 @@ public class PatientsGenerator {
         return allSymptoms.stream()
                 .limit(2)
                 .collect(Collectors.toList());
-
     }
+
+
 }

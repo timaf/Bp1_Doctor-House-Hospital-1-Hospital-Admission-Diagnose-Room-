@@ -13,26 +13,25 @@ import java.util.List;
 public class DiagnoseRoomEndpoint {
 
     private RestTemplate restTemplate;
-    private Patient patient;
     private DrHouseDiagnose drHouseDiagnose;
-    private List<Patient> patients = new ArrayList <>();
-
+    private List <Patient> patients = new ArrayList <>();
+    private Patient patient;
     public DiagnoseRoomEndpoint(RestTemplate restTemplate, Patient patient) {
         this.restTemplate = restTemplate;
     }
 
     @GetMapping
-    List<Patient> receivePatient(){
+    List <Patient> receivePatient() {
         return patients;
     }
-    @PostMapping
-    Patient addPatient(@RequestBody Patient patient){
-        patients.add(patient);
-        Patient patient1 = drHouseDiagnose.diagnosePatient(patient);
-        String nurseryUrl = "http://localhost:patients";
-        Patient patient2 = restTemplate.postForObject(nurseryUrl, patient1, Patient.class);
-        return patient2;
-    }
 
+    @PostMapping
+    Patient addPatient(@RequestBody Patient patient) {
+        patients.add(patient);
+       /* patient = drHouseDiagnose.diagnosePatient(patient);
+        String nurseryUrl = "http://localhost:9003/patients";
+        patient = restTemplate.postForObject(nurseryUrl, patient, Patient.class);*/
+        return  patient;
+    }
 
 }

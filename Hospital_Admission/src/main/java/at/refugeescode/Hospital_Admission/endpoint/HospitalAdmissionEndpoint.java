@@ -22,27 +22,15 @@ public class HospitalAdmissionEndpoint {
     }
 
     @GetMapping
-    List<Patient> getAll() {
+    Patient sendPatient() {
         List <Patient> patients = patientsGenerator.bringPatients();
         System.out.println("The patients are here .");
-        return patients;
-    }
-
-
-    @PostMapping
-    Patient sendPatient(@RequestBody Patient patient){
-        List <Patient> patients = patientsGenerator.bringPatients();
         String diagnoseUrl = "http://localhost:9002/patients";
         int id = new Random().nextInt(100);
         Collections.shuffle(patients);
-        Patient patient1 = patients.get(0);
-        patient1.setId(id);
-        patient = restTemplate.postForObject(diagnoseUrl, patient1, Patient.class);
-        return patient;
+        Patient patient = patients.get(0);
+        patient.setId(id);
+        Patient patient1 = restTemplate.postForObject(diagnoseUrl, patient, Patient.class);
+        return patient1;
     }
-
-
-
-
-
 }
