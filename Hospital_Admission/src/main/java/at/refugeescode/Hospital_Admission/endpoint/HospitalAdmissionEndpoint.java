@@ -26,11 +26,12 @@ public class HospitalAdmissionEndpoint {
         List <Patient> patients = patientsGenerator.bringPatients();
         System.out.println("The patients are here .");
         String diagnoseUrl = "http://localhost:9002/patients";
-        int id = new Random().nextInt(100);
+        int patientNumber = new Random().nextInt(100);
         Collections.shuffle(patients);
         Patient patient = patients.get(0);
-        patient.setId(id);
+        patient.setPatientNumber(patientNumber);
         Patient patient1 = restTemplate.postForObject(diagnoseUrl, patient, Patient.class);
+        System.out.println(patient1.toString());
         return patient1;
     }
 }

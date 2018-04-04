@@ -15,9 +15,11 @@ public class DiagnoseRoomEndpoint {
     private RestTemplate restTemplate;
     private DrHouseDiagnose drHouseDiagnose;
     private List <Patient> patients = new ArrayList <>();
-    private Patient patient;
-    public DiagnoseRoomEndpoint(RestTemplate restTemplate, Patient patient) {
+
+
+    public DiagnoseRoomEndpoint(RestTemplate restTemplate, DrHouseDiagnose drHouseDiagnose) {
         this.restTemplate = restTemplate;
+        this.drHouseDiagnose = drHouseDiagnose;
     }
 
     @GetMapping
@@ -27,11 +29,12 @@ public class DiagnoseRoomEndpoint {
 
     @PostMapping
     Patient addPatient(@RequestBody Patient patient) {
-        patients.add(patient);
-       /* patient = drHouseDiagnose.diagnosePatient(patient);
+        Patient diagnoseRoomPatient = drHouseDiagnose.diagnosePatient(patient);
+        patients.add(diagnoseRoomPatient);
         String nurseryUrl = "http://localhost:9003/patients";
-        patient = restTemplate.postForObject(nurseryUrl, patient, Patient.class);*/
-        return  patient;
+        patient = restTemplate.postForObject(nurseryUrl, diagnoseRoomPatient, Patient.class);
+        return  diagnoseRoomPatient;
+
     }
 
 }

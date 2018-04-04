@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Patient {
 
-    private int id;
+    private int patientNumber;
     private String name;
     private List<String> symptoms = new ArrayList <>();
     private String illness;
@@ -17,15 +17,15 @@ public class Patient {
     }
 
 
-    public Patient(int id, String name, List <String> symptoms, String illness) {
-        this.id = id;
+    public Patient(int patientNumber, String name, List <String> symptoms, String illness) {
+        this.patientNumber = patientNumber;
         this.name = name;
         this.symptoms = symptoms;
         this.illness = illness;
     }
 
-    public int getId() {
-        return id;
+    public int getPatientNumber() {
+        return patientNumber;
     }
 
     public String getName() {
@@ -41,8 +41,8 @@ public class Patient {
         return illness;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setPatientNumber(int patientNumber) {
+        this.patientNumber = patientNumber;
     }
 
     public void setName(String name) {
@@ -60,7 +60,7 @@ public class Patient {
     @Override
     public String toString() {
         return "Patient{" +
-                "id=" + id +
+                "patientNumber=" + patientNumber +
                 ", name='" + name + '\'' +
                 ", symptoms=" + symptoms +
                 ", illness='" + illness + '\'' +
