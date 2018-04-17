@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>admission</title>
+    <title>administration</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <!-- Using CDN -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -32,7 +32,7 @@
             <form name="form" th:action="@{/}" th:object="${patient}" method="POST">
                 <fieldset>
 
-                  <span>     </span><div class="mdl-textfield mdl-js-textfield">
+                    <div class="mdl-textfield mdl-js-textfield">
                         <input class="mdl-textfield__input" type="text" th:field="*{name}" value=""  autofocus="autofocus" id="sample1">
                         <label class="mdl-textfield__label" for="sample1">Name</label>
                     </div><br/>

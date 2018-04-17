@@ -30,7 +30,7 @@
             <p th:if="${param.error}" class="alert alert-error">There was an error, please try again</p>
             <h2>Welcome to our Accountancy</h2><br/>
             <h4>Invoices</h4>
-            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" th:unless="${#lists.isEmpty(invoices)}">>
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" th:unless="${#lists.isEmpty(invoices)}">
                 <thead>
                 <tr>
                     <th class="mdl-data-table__cell--non-numeric">Patient name</th>

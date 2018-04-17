@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.Id;
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 public class Patient {
@@ -25,8 +23,8 @@ public class Patient {
 
     private String treatment;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Set<Invoice> invoices = new HashSet<>();
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Invoice invoice;
 
     public Long getId() {
         return id;
@@ -76,12 +74,12 @@ public class Patient {
         this.treatment = treatment;
     }
 
-    public Set <Invoice> getInvoices() {
-        return invoices;
+    public Invoice getInvoice() {
+        return invoice;
     }
 
-    public void setInvoices(Set <Invoice> invoices) {
-        this.invoices = invoices;
+    public void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
     }
 
     @Override
@@ -93,7 +91,7 @@ public class Patient {
                 ", symptoms=" + symptoms +
                 ", illness='" + illness + '\'' +
                 ", treatment='" + treatment + '\'' +
-                ", invoices=" + invoices +
+                ", invoice=" + invoice +
                 '}';
     }
 }
