@@ -4,16 +4,8 @@ public class Patient {
 
     private int patientNumber;
     private String name;
-    private String symptom;
+    private String symptoms;
 
-    public Patient() {
-    }
-
-    public Patient(int patientNumber, String name, String symptom) {
-        patientNumber = 0;
-        this.name = name;
-        this.symptom = symptom;
-    }
 
     public int getPatientNumber() {
         return patientNumber;
@@ -23,20 +15,20 @@ public class Patient {
         return name;
     }
 
-    public String getSymptom() {
-        return symptom;
+    public String getSymptoms() {
+        return symptoms;
     }
 
     public void setPatientNumber(int patientNumber) {
-        this.patientNumber = patientNumber;
+        this.patientNumber = 0;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setSymptom(String symptom) {
-        this.symptom = symptom;
+    public void setSymptoms(String symptoms) {
+        this.symptoms = symptoms;
     }
 
     @Override
@@ -44,7 +36,7 @@ public class Patient {
         return "Patient{" +
                 "patientNumber=" + patientNumber +
                 ", name='" + name + '\'' +
-                ", symptoms=" + symptom +
+                ", symptoms=" + symptoms +
                  '\'' +
                 '}';
     }

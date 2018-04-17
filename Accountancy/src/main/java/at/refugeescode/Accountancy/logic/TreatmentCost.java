@@ -24,8 +24,8 @@ public class TreatmentCost {
     @Value("#{'${prises}'.split(',')}")
     private List<String> prises;
 
-    public Patient calculateCost(Patient patient){
 
+    public Patient calculateCost(Patient patient){
         Map<String, String> accountMap = IntStream.range(0, treatments.size())
                 .boxed()
                 .collect(toMap(treatments::get, prises::get));

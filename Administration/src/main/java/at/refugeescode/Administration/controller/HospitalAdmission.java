@@ -2,12 +2,10 @@ package at.refugeescode.Administration.controller;
 
 import at.refugeescode.Administration.model.Patient;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
-@Scope("session")
 public class HospitalAdmission {
 
     private RestTemplate restTemplate;
@@ -16,7 +14,7 @@ public class HospitalAdmission {
     private String admissionUrl;
 
     private String name;
-    private String symptom;
+    private String symptoms;
 
     public HospitalAdmission(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
@@ -26,13 +24,15 @@ public class HospitalAdmission {
         return name;
     }
 
-    public String getSymptom() {
-        return symptom;
+    public String getSymptoms() {
+        return symptoms;
     }
 
     public void send(Patient patient){
         this.name = patient.getName();
-        this.symptom = patient.getSymptom().toLowerCase();
-        restTemplate.postForObject(admissionUrl, patient, Patient.class);
+        this.symptoms = patient.getSymptoms();
+        Patient patient1 = restTemplate.postForObject(admissionUrl, patient, Patient.class);
+        System.out.println(patient);
+        System.out.println("bbbbbbb");
     }
 }

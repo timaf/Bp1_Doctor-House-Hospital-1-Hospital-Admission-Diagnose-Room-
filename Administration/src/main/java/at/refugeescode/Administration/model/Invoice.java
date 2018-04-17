@@ -13,17 +13,8 @@ public class Invoice {
 
     private Double treatmentCost;
 
-    public Invoice() {
-    }
-
-    public Long getId() {
+     public Long getId() {
         return id;
-    }
-
-    public Invoice(String patientName, LocalDateTime date, Double treatmentCost) {
-        this.patientName = patientName;
-        this.date = date;
-        this.treatmentCost = treatmentCost;
     }
 
     public void setId(Long id) {

@@ -26,6 +26,10 @@ public class InvoiceController {
         return hospitalAccountancy.bringInvoices();
     }
 
+    @ModelAttribute("invoice")
+    Invoice newTodo(){
+        return new Invoice();
+    }
     @GetMapping
     String page(){
         return "invoices";

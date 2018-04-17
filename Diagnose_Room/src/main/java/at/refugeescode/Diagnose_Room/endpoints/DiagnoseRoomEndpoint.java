@@ -27,7 +27,7 @@ public class DiagnoseRoomEndpoint {
     @PostMapping
     Patient addPatient(@RequestBody Patient patient) {
         Patient diagnoseRoomPatient = drHouseDiagnose.diagnosePatient(patient);
-       // restTemplate.postForObject(nurseryUrl, diagnoseRoomPatient, Patient.class);
+        restTemplate.postForObject(nurseryUrl, diagnoseRoomPatient, Patient.class);
         return  diagnoseRoomPatient;
 
     }

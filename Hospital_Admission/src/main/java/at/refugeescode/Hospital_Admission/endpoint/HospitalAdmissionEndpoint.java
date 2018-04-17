@@ -25,6 +25,8 @@ public class HospitalAdmissionEndpoint {
         int patientNumber = new Random().nextInt(100);
         patient.setPatientNumber(patientNumber);
         restTemplate.postForObject(diagnoseUrl, patient, Patient.class);
+        System.out.println(patient);
+        System.out.println("gggggg");
         return patient;
     }
 }

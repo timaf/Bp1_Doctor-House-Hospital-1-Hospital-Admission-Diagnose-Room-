@@ -35,14 +35,12 @@
                     <div class="mdl-textfield mdl-js-textfield">
                         <input class="mdl-textfield__input" type="text" th:field="*{name}" value=""  autofocus="autofocus" id="sample1">
                         <label class="mdl-textfield__label" for="sample1">Name</label>
-                    </div><br/>
+                    </div><br/><br/>
 
-                    <!-- Left aligned menu below button -->
-
-                            <select th:field="*{symptom}">
-                                <option th:each="symptom : ${symptoms}"
-                                        th:value="${symptom}"
-                                        th:text="${symptom}">Symptoms
+                            <select th:field="*{symptoms}">
+                                <option th:each="symptoms : ${symptomsList}"
+                                        th:value="${symptoms}"
+                                        th:text="${symptoms}">Symptoms
                                 </option>
                             </select>
 
