@@ -1,4 +1,4 @@
-package at.refugeescode.Diagnose_Room.Configuration;
+package at.refugeescode.Administration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

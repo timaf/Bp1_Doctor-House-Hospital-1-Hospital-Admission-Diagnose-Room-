@@ -1,4 +1,4 @@
-package at.refugeescode.Hospital_Admission.Configuration;
+package at.refugeescode.Diagnose_Room.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
